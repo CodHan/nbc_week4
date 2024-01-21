@@ -1,0 +1,9 @@
+.wrap {
+  max-width: 1200px;
+  min-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+* {
+  list-style: none;
+}
