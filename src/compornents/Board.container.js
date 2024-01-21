@@ -4,9 +4,7 @@ import { useState } from 'react';
 function BoardContainer() {
   const [toDoTitile, setTodoTitile] = useState('');
   const [toDoList, setToDoList] = useState('');
-  const [toDos, setToDos] = useState([
-    { id: 0, title: '몰라', list: '그만하고싶다', done: false },
-  ]);
+  const [toDos, setToDos] = useState([{}]); // todolist 값들을 저장, 배열안의 객체(JSON형태)
 
   const onChangeTitle = (e) => {
     setTodoTitile(e.target.value);
@@ -16,11 +14,11 @@ function BoardContainer() {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+  const addBtn = () => {
     if (toDoTitile === '' && toDoList === '') {
       return;
     }
-  };
-  const addBtn = () => {
     const newTodo = {
       id: toDos.length + 1,
       title: toDoTitile,
@@ -28,6 +26,8 @@ function BoardContainer() {
       done: false,
     };
     setToDos([...toDos, newTodo]);
+    setTodoTitile('');
+    setToDoList('');
   };
 
   const deleteItem = (id) => {
